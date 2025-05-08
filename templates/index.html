@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-code-branch"></i></span>
+                    <span class="logo-text">CI/CD Dashboard</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="#builds"><i class="fas fa-hammer"></i> <span>Builds</span></a>
+                    </li>
+                    <li>
+                        <a href="#tests"><i class="fas fa-vial"></i> <span>Tests</span></a>
+                    </li>
+                    <li>
+                        <a href="#coverage"><i class="fas fa-shield-alt"></i> <span>Coverage</span></a>
+                    </li>
+                    <li>
+                        <a href="#team"><i class="fas fa-users"></i> <span>Team</span></a>
+                    </li>
+                    <li>
+                        <a href="#settings"><i class="fas fa-cog"></i> <span>Settings</span></a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#docs"><i class="fas fa-book"></i> <span>Documentation</span></a>
+                <a href="#github"><i class="fab fa-github"></i> <span>GitHub</span></a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="project-selector">
+                    <div class="project-name">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Continuous Integration with Unit and Integration Tests</span>
+                    </div>
+                    <div class="branch-selector">
+                        <i class="fas fa-code-branch"></i>
+                        <span>master</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-play"></i>
+                        <span>Run Tests</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Rebuild</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <section class="dashboard-section" id="dashboard">
+                    <div class="section-header">
+                        <h1>CI/CD Dashboard</h1>
+                        <p>Monitor your continuous integration and deployment pipeline</p>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Build Status</h3>
+                                <p class="stat-value">Passing</p>
+                                <p class="stat-info">Last build: 25 min ago</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon success">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Tests</h3>
+                                <p class="stat-value">42/42 Passing</p>
+                                <p class="stat-info">100% success rate</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon warning">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Code Coverage</h3>
+                                <p class="stat-value">87%</p>
+                                <p class="stat-info">+2.5% from last build</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon info">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Build Time</h3>
+                                <p class="stat-value">3m 42s</p>
+                                <p class="stat-info">-12s from last build</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-container">
+                        <div class="section-subheader">
+                            <h2>CI/CD Pipeline</h2>
+                            <span class="build-number">#128</span>
+                        </div>
+                        <div class="pipeline-stages">
+                            <div class="pipeline-stage completed">
+                                <div class="stage-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="stage-details">
+                                    <h4>Checkout</h4>
+                                    <p>12s</p>
+                                </div>
+                                <div class="stage-status">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="pipeline-connector completed"></div>
+                            <div class="pipeline-stage completed">
+                                <div class="stage-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="stage-details">
+                                    <h4>Build</h4>
+                                    <p>1m 28s</p>
+                                </div>
+                                <div class="stage-status">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="pipeline-connector completed"></div>
+                            <div class="pipeline-stage completed">
+                                <div class="stage-icon">
+                                    <i class="fas fa-vial"></i>
+                                </div>
+                                <div class="stage-details">
+                                    <h4>Unit Tests</h4>
+                                    <p>42s</p>
+                                </div>
+                                <div class="stage-status">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="pipeline-connector completed"></div>
+                            <div class="pipeline-stage completed">
+                                <div class="stage-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <div class="stage-details">
+                                    <h4>Integration Tests</h4>
+                                    <p>1m 20s</p>
+                                </div>
+                                <div class="stage-status">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="pipeline-connector completed"></div>
+                            <div class="pipeline-stage completed">
+                                <div class="stage-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="stage-details">
+                                    <h4>Code Coverage</h4>
+                                    <p>15s</p>
+                                </div>
+                                <div class="stage-status">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tests-section" id="tests">
+                    <div class="section-subheader">
+                        <h2>Test Results</h2>
+                        <div class="test-filters">
+                            <button class="btn btn-sm active">All</button>
+                            <button class="btn btn-sm">Unit</button>
+                            <button class="btn btn-sm">Integration</button>
+                            <button class="btn btn-sm">Selenium</button>
+                        </div>
+                    </div>
+                    
+                    <div class="test-results">
+                        <div class="test-summary">
+                            <div class="test-chart" id="test-chart"></div>
+                            <div class="test-stats">
+                                <div class="test-stat">
+                                    <h4>Total Tests</h4>
+                                    <p>42</p>
+                                </div>
+                                <div class="test-stat">
+                                    <h4>Passing</h4>
+                                    <p class="success">42</p>
+                                </div>
+                                <div class="test-stat">
+                                    <h4>Failing</h4>
+                                    <p class="danger">0</p>
+                                </div>
+                                <div class="test-stat">
+                                    <h4>Skipped</h4>
+                                    <p class="warning">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="test-list">
+                            <div class="test-item success">
+                                <div class="test-status">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="test-details">
+                                    <h4>test_home</h4>
+                                    <p>Verifies home route returns 200 status code</p>
+                                </div>
+                                <div class="test-meta">
+                                    <span class="test-time">0.12s</span>
+                                    <span class="test-type">Unit</span>
+                                </div>
+                            </div>
+                            
+                            <div class="test-item success">
+                                <div class="test-status">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="test-details">
+                                    <h4>test_selenium</h4>
+                                    <p>Verifies UI elements with Selenium WebDriver</p>
+                                </div>
+                                <div class="test-meta">
+                                    <span class="test-time">2.34s</span>
+                                    <span class="test-type">Integration</span>
+                                </div>
+                            </div>
+                            
+                            <div class="test-item success">
+                                <div class="test-status">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="test-details">
+                                    <h4>test_api_response</h4>
+                                    <p>Validates API response format and content</p>
+                                </div>
+                                <div class="test-meta">
+                                    <span class="test-time">0.18s</span>
+                                    <span class="test-type">Unit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="team-section" id="team">
+                    <div class="section-subheader">
+                        <h2>Team Members</h2>
+                    </div>
+                    
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-info">
+                                <h3>Abdullah Baqai</h3>
+                                <p class="team-id">21K-4710</p>
+                                <p class="team-contact">03112543889</p>
+                            
+                            </div>
+                            <div class="team-stats">
+                                <div class="team-stat">
+                                    <span class="stat-label">Commits</span>
+                                    <span class="stat-value">42</span>
+                                </div>
+                                <div class="team-stat">
+                                    <span class="stat-label">PRs</span>
+                                    <span class="stat-value">15</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="team-info">
+                                <h3>Areeba Awan</h3>
+                                <p class="team-id">21K-3102</p>
+                                <p class="team-contact">03351220350</p>
+                                
+                            </div>
+                            <div class="team-stats">
+                                <div class="team-stat">
+                                    <span class="stat-label">Commits</span>
+                                    <span class="stat-value">38</span>
+                                </div>
+                                <div class="team-stat">
+                                    <span class="stat-label">PRs</span>
+                                    <span class="stat-value">12</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="team-info">
+                                <h3>Ausaf Ur Rehman</h3>
+                                <p class="team-id">21K-3101</p>
+                                <p class="team-contact">03343272744</p>
+                                
+                            </div>
+                            <div class="team-stats">
+                                <div class="team-stat">
+                                    <span class="stat-label">Commits</span>
+                                    <span class="stat-value">35</span>
+                                </div>
+                                <div class="team-stat">
+                                    <span class="stat-label">PRs</span>
+                                    <span class="stat-value">10</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="team-info">
+                                <h3>Ali Qazi</h3>
+                                <p class="team-id">21k-4748</p>
+                                <p class="team-contact">03162241908</p>
+                            
+                            </div>
+                            <div class="team-stats">
+                                <div class="team-stat">
+                                    <span class="stat-label">Commits</span>
+                                    <span class="stat-value">30</span>
+                                </div>
+                                <div class="team-stat">
+                                    <span class="stat-label">PRs</span>
+                                    <span class="stat-value">8</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="team-info">
+                                <h3>Hamza Yaqoob</h3>
+                                <p class="team-id">21K-3011</p>
+                                <p class="team-contact">03352606928</p>
+                                
+                            </div>
+                            <div class="team-stats">
+                                <div class="team-stat">
+                                    <span class="stat-label">Commits</span>
+                                    <span class="stat-value">32</span>
+                                </div>
+                                <div class="team-stat">
+                                    <span class="stat-label">PRs</span>
+                                    <span class="stat-value">9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
