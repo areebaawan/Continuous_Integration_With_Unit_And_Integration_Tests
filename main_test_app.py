@@ -11,7 +11,7 @@ class FlaskAppTestCase(unittest.TestCase):
     def test_home(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b"Flask App", response.data)  # Ensure the word 'Flask App' appears in the response
+        self.assertIn(b"CI/CD Dashboard", response.data)  # Ensure the word 'Flask App' appears in the response
 
 if __name__ == '__main__':
     unittest.main()
