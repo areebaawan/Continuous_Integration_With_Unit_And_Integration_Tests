@@ -62,7 +62,8 @@ jobs:
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        slug: abdullahbaqai/Continuous_Integration-with-Unit-and-Integration-Tests
+        slug: areebaawan/Continuous_Integration_With_Unit_And_Integration_Tests
+
         files: ./coverage.xml
         flags: unittests
         
